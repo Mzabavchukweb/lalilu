@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+
+# Specific rules for search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Block access to sensitive directories (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+
+# Allow access to important files
+Allow: /favicon.ico
+Allow: /favicon.svg
+Allow: /favicon.png
+Allow: /images_perfum/
+Allow: /*.webp$
+Allow: /*.avif$
+
+# Sitemap location
+Sitemap: https://lailu.pl/sitemap.xml
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
