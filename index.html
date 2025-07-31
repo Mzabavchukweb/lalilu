@@ -82,7 +82,7 @@
             "https://www.instagram.com/laliluperfumeria"
         ],
         "telephone": "+48 786 691 636",
-        "email": "perfumeria@lailu.com.pl",
+        "email": "perfumeria@lalilu.com.pl",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "ul. Aleja Wojska Polskiego 9",
@@ -172,6 +172,8 @@
             "bestRating": "5",
             "worstRating": "1"
         }
+        
+
     }
     </script>
     <style>
@@ -2328,247 +2330,924 @@
             margin: 0 auto;
         }
 
-        /* Newsletter Section */
+        /* Newsletter Section - Modern Design */
         .newsletter {
-            background: var(--light-gray);
-            text-align: center;
-            padding: 8rem 0;
+            background: var(--gradient-primary);
+            color: white;
             position: relative;
+            overflow: hidden;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 0;
         }
 
-        .newsletter::before {
+        .newsletter-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .newsletter-background::before {
             content: '';
             position: absolute;
-            top: 30%;
-            left: 15%;
-            width: 80px;
-            height: 1px;
-            background: rgba(233, 30, 99, 0.1);
-            transform: rotate(-45deg);
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08) 0%, transparent 40%),
+                radial-gradient(circle at 40% 80%, rgba(255,255,255,0.06) 0%, transparent 35%);
+            animation: float 20s ease-in-out infinite;
         }
 
-        .newsletter .section-title {
+        .newsletter-particle-1,
+        .newsletter-particle-2,
+        .newsletter-particle-3 {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .newsletter-particle-1 {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .newsletter-particle-2 {
+            width: 80px;
+            height: 80px;
+            top: 60%;
+            right: 20%;
+            animation-delay: -5s;
+        }
+
+        .newsletter-particle-3 {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 10%;
+            animation-delay: -10s;
+        }
+
+        .newsletter-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.1; }
+        }
+
+        .newsletter-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .newsletter-header {
+            margin-bottom: 3rem;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .newsletter-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
             margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        .newsletter-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .newsletter-title {
+            font-family: 'Lato', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: white;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .newsletter-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            margin-bottom: 3rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 300;
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: slideInUp 0.8s ease-out 0.2s both;
         }
 
         .newsletter-form {
-            display: flex;
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 0.5rem;
-            border: 1px solid #e0e0e0;
+            width: 100%;
         }
 
-        .newsletter-form input {
-            flex: 1;
-            padding: 1.2rem 1.5rem;
-            border: none;
-            font-size: 1rem;
-            outline: none;
-            background: transparent;
-        }
-
-        .newsletter-form input::placeholder {
-            color: #999;
-        }
-
-        .newsletter-form button {
-            padding: 1.2rem 2.5rem;
-            background: var(--raspberry);
-            color: white;
-            border: none;
-            font-weight: 400;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        .newsletter-form button:hover {
-            background: #ad1457;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--white);
-            color: var(--dark-gray);
-            padding: 3rem 0 0;
-            border-top: 1px solid #f0f0f0;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-            gap: clamp(1.5rem, 3vw, 2rem);
+        .form-input-group {
             margin-bottom: 2rem;
-            align-items: start;
-            flex-wrap: wrap;
         }
 
-        .footer-section h3 {
-            font-family: 'Lato', sans-serif;
-            margin-bottom: 1rem;
-            color: var(--raspberry);
-            font-weight: 300;
+        .input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 1.1rem;
+            z-index: 2;
+            transition: all 0.3s ease;
         }
 
-        .footer-section h3:first-child {
-            font-size: 1.3rem;
-            font-weight: 300;
+        .newsletter-form input[type="email"] {
+            width: 100%;
+            padding: 1.2rem 1.5rem 1.2rem 3.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .newsletter-form input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .newsletter-form input[type="email"]:focus {
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .newsletter-form input[type="email"]:focus + .input-border {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        .newsletter-form input[type="email"]:focus ~ .input-icon {
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .input-border {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            opacity: 0;
+            transform: scaleX(0);
+            transition: all 0.3s ease;
+            border-radius: 1px;
+        }
+
+        .privacy-checkboxes {
+            margin: 2.5rem 0;
+        }
+
+        .checkbox-item {
+            margin-bottom: 1rem;
+        }
+
+        .custom-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .custom-checkbox:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .custom-checkbox input[type="checkbox"] {
+            display: none;
+        }
+
+        .checkmark {
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            position: relative;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .checkmark::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 8px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            border-radius: 1px;
+            transform-origin: center;
+            transition: all 0.3s ease;
+        }
+
+        .custom-checkbox input[type="checkbox"]:checked + .checkmark {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: rgba(255, 255, 255, 0.9);
+            transform: scale(1.1);
+        }
+
+        .custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
+            transform: translate(-50%, -60%) rotate(45deg) scale(1);
+        }
+
+        .checkbox-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .checkbox-text a {
+            color: white;
+            text-decoration: underline;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-text a:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-button-wrapper {
+            margin-top: 2.5rem;
+        }
+
+        .newsletter-btn {
+            position: relative;
+            width: 100%;
+            padding: 1.3rem 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--raspberry);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 1.5rem;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .newsletter-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .newsletter-btn:not(:disabled):hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-text {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-icon {
+            margin-left: 0.8rem;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .newsletter-btn:not(:disabled):hover .btn-icon {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .btn-ripple {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(233, 30, 99, 0.3);
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+        }
+
+        .newsletter-btn:active .btn-ripple {
+            width: 300px;
+            height: 300px;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .newsletter {
+                min-height: auto;
+                padding: 3rem 0;
+            }
+
+            .newsletter-content {
+                padding: 0 1rem;
+            }
+
+            .newsletter-form-container {
+                padding: 2rem 1.5rem;
+                border-radius: 15px;
+            }
+
+            .newsletter-icon {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 1.5rem;
+            }
+
+            .newsletter-icon i {
+                font-size: 2rem;
+            }
+
+            .newsletter-title {
+                margin-bottom: 1rem;
+            }
+
+            .newsletter-form input[type="email"] {
+                padding: 1rem 1rem 1rem 3rem;
+                font-size: 16px;
+            }
+
+            .input-icon {
+                left: 1rem;
+                font-size: 1rem;
+            }
+
+            .newsletter-btn {
+                padding: 1.1rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .custom-checkbox {
+                gap: 0.8rem;
+            }
+
+            .checkmark {
+                width: 20px;
+                height: 20px;
+            }
+
+            .checkbox-text {
+            font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .newsletter-form-container {
+                padding: 1.5rem 1rem;
+            }
+
+            .newsletter-title {
+                font-size: 2rem;
+            }
+
+            .newsletter-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .newsletter-form input[type="email"] {
+                padding: 0.9rem 0.9rem 0.9rem 2.8rem;
+            }
+
+            .newsletter-btn {
+                padding: 1rem 1.2rem;
+                font-size: 0.95rem;
+            }
+
+            .checkbox-text {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Modern Footer */
+        .footer {
+            background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+            color: var(--dark-gray);
+            padding: 4rem 0 0;
+            border-top: 1px solid rgba(233, 30, 99, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-gradient-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(233, 30, 99, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(233, 30, 99, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .footer-logo {
             margin-bottom: 1.5rem;
-            text-align: center;
         }
 
         .footer-logo svg {
-            width: 180px;
-            height: 50px;
+            width: 200px;
+            height: 55px;
+            filter: drop-shadow(0 2px 4px rgba(233, 30, 99, 0.1));
         }
 
-        .footer-section p, .footer-section a {
+        .footer-description {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .social-media-section h4 {
+            font-family: 'Lato', sans-serif;
+            color: var(--raspberry);
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .social-links-modern {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1rem;
+            background: rgba(233, 30, 99, 0.05);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--dark-gray);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(233, 30, 99, 0.1);
+        }
+
+        .social-link:hover {
+            background: rgba(233, 30, 99, 0.1);
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(233, 30, 99, 0.15);
+        }
+
+        .social-link i {
+            font-size: 1.2rem;
+            color: var(--raspberry);
+            width: 20px;
+            text-align: center;
+        }
+
+        .social-link span {
+            font-weight: 400;
+            font-size: 0.95rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Lato', sans-serif;
+            color: var(--raspberry);
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .footer-section h3 i {
+            font-size: 1.1rem;
+        }
+
+        .contact-info-modern p {
+            margin-bottom: 0.8rem;
+            color: var(--text-gray);
+            font-weight: 300;
+        }
+
+        .contact-info-modern .address {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--dark-gray);
+        }
+
+        .contact-info-modern .city {
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.5rem 0;
+        }
+
+        .contact-item i {
+            color: var(--raspberry);
+            width: 16px;
+            text-align: center;
+        }
+
+        .contact-item a {
             color: var(--text-gray);
             text-decoration: none;
-            margin-bottom: 0.5rem;
-            display: block;
             transition: all 0.3s ease;
-            font-size: 1rem;
-            font-weight: 300;
         }
 
-        .company-info {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(233, 30, 99, 0.1);
-        }
-
-        .company-info p {
-            font-size: 0.9rem;
-            margin-bottom: 0.3rem;
-            font-weight: 300;
-        }
-
-        .footer-section p i {
+        .contact-item a:hover {
             color: var(--raspberry);
-            margin-right: 0.5rem;
-            width: 16px;
+            text-decoration: underline;
         }
 
-        .footer-section a:hover {
+        .hours-modern {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 1rem;
+            background: rgba(233, 30, 99, 0.03);
+            border-radius: 8px;
+            border-left: 3px solid var(--raspberry);
+        }
+
+        .hours-row.closed {
+            opacity: 0.7;
+            border-left-color: #999;
+        }
+
+        .hours-row .day {
+            font-weight: 400;
+            color: var(--dark-gray);
+        }
+
+        .hours-row .time {
+            font-weight: 500;
             color: var(--raspberry);
+        }
+
+        .hours-row.closed .time {
+            color: #999;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.6rem 0;
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            padding-left: 0.5rem;
+        }
+
+        .footer-link:hover {
+            color: var(--raspberry);
+            background: rgba(233, 30, 99, 0.05);
             transform: translateX(5px);
         }
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: inline-block;
+        .footer-link i {
             color: var(--raspberry);
-            text-decoration: none;
-            transition: transform 0.3s ease;
-            margin: 0 0.5rem;
+            width: 16px;
+            text-align: center;
+            font-size: 0.9rem;
         }
 
-        .social-links a:hover {
-            transform: scale(1.1);
-            color: #ad1457;
+        .company-details {
+            padding: 1rem;
+            background: rgba(233, 30, 99, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(233, 30, 99, 0.1);
         }
 
-        .social-links a:focus {
-            outline: 2px solid var(--raspberry);
-            outline-offset: 2px;
-        }
-
-        /* Focus states for filter buttons */
-        .filter-btn:focus {
-            outline: 2px solid var(--raspberry);
-            outline-offset: 2px;
+        .company-details p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-gray);
         }
 
         .footer-bottom {
+            border-top: 1px solid rgba(233, 30, 99, 0.1);
+            padding: 2rem 0;
             text-align: center;
-            padding-top: 0.3rem;
-            padding-bottom: 0.3rem;
-            border-top: 1px solid #f0f0f0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-bottom-content p {
             color: var(--text-gray);
+            margin-bottom: 0.3rem;
         }
-        
-        .address-block {
-            margin-bottom: 1rem;
+
+        .footer-bottom-content p:first-child {
+            font-weight: 400;
+            color: var(--dark-gray);
         }
-        
-        .address-block p {
+
+        .footer-subtitle {
+            font-size: 0.9rem;
+            color: var(--raspberry);
+            font-style: italic;
+        }
+
+        /* Footer Responsive */
+        @media (max-width: 992px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                padding: 3rem 0 0;
+                text-align: center;
+            }
+
+            .footer-main {
+                gap: 2rem;
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .footer-brand {
+                text-align: center;
+                align-items: center;
             display: flex;
+                flex-direction: column;
+            }
+
+            .footer-description {
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .company-details {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
             align-items: center;
+            }
+
+            .social-links-modern {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
             gap: 0.5rem;
-            margin: 0.3rem 0;
-        }
-        
-        .address-block i {
-            width: 16px;
+                margin: 0 auto;
+            }
+
+            .social-link {
+                padding: 0.6rem 0.8rem;
+                flex: 0 0 auto;
+            }
+
+            .social-link span {
+                display: none;
+            }
+
+            .footer-section {
             text-align: center;
-            color: var(--raspberry);
-        }
-        
-        .address-block .city {
-            margin-left: 20px;
-            margin-top: 0.2rem;
-            color: var(--text-gray);
-        }
-        
-        .hours-block p {
             display: flex;
+                flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
-            margin: 0.3rem 0;
         }
         
-        .hours-block i {
-            width: 16px;
+            .footer-section h3 {
             text-align: center;
-            color: var(--raspberry);
         }
         
-        .contact-block p {
-            margin: 0.5rem 0;
+            .footer-links {
+                align-items: center;
+                text-align: center;
             display: flex;
+                flex-direction: column;
+            }
+
+            .footer-links a {
+                text-align: center;
+            }
+
+            .hours-modern {
+                max-width: 300px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                text-align: center;
+            }
+
+            .footer-bottom-content {
+                text-align: center;
+                justify-content: center;
             align-items: center;
-            gap: 0.5rem;
+            }
         }
         
-        .contact-block i {
-            width: 16px;
+                @media (max-width: 480px) {
+            .footer {
+                padding: 2rem 0 0;
             text-align: center;
-            color: var(--raspberry);
+            }
+
+            .footer-logo svg {
+                width: 160px;
+                height: 45px;
+                margin: 0 auto;
+            }
+
+            .footer-description {
+                font-size: 1rem;
+                text-align: center;
+                margin: 0 auto;
+                padding: 0 1rem;
+            }
+
+            .footer-section {
+                text-align: center;
+            display: flex;
+                flex-direction: column;
+            align-items: center;
+                padding: 0 1rem;
         }
         
-        .contact-block a {
-            color: var(--text-gray);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .contact-block a:hover {
-            color: var(--raspberry);
+            .footer-section h3 {
+            text-align: center;
+                margin: 0 auto;
+            }
+
+            .footer-links {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hours-row {
+                flex-direction: column;
+                gap: 0.3rem;
+                text-align: center;
+                align-items: center;
+            }
+
+            .company-details {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 0 1rem;
+            }
+
+            .company-details p {
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .social-links-modern {
+                justify-content: center;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                text-align: center;
+                padding: 0 1rem;
+            }
+
+            .footer-bottom-content {
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
         }
         
 
@@ -3178,32 +3857,7 @@
                 padding: 1.5rem;
             }
             
-            /* Newsletter Mobile */
-            .newsletter {
-                text-align: center;
-                padding: 3rem 0;
-            }
-            
-            .newsletter-subtitle {
-                font-size: 1rem;
-                margin-bottom: 2rem;
-                text-align: center;
-            }
-            
-            .newsletter-form {
-                flex-direction: column;
-                gap: 1rem;
-                max-width: 80%;
-                margin: 0 auto;
-            }
-            
-            .newsletter-form input,
-            .newsletter-form button {
-                width: 100%;
-                font-size: 16px; /* Prevents zoom on iOS */
-                padding: 1rem;
-                text-align: center;
-            }
+
             
             /* Location Map Mobile */
             .location-map iframe {
@@ -3565,7 +4219,7 @@
             <div class="top-header-content">
                 <div class="contact-info">
                     <span><i class="fas fa-phone"></i> <a href="tel:+48786691636" style="color: white; text-decoration: none;">+48 786 691 636</a></span>
-                    <span><i class="fas fa-envelope"></i> <a href="mailto:perfumeria@lailu.com.pl" style="color: white; text-decoration: none;">perfumeria@lailu.com.pl</a></span>
+                                            <span><i class="fas fa-envelope"></i> <a href="mailto:perfumeria@lalilu.com.pl" style="color: white; text-decoration: none;">perfumeria@lalilu.com.pl</a></span>
                     <span><i class="fas fa-clock"></i> Pon-Pt: 10:00-20:00 | Sob: 10:00-16:00</span>
                 </div>
             </div>
@@ -3610,11 +4264,11 @@
                     Innowacyjna metoda analizy jak dany zapach pasuje do danej osoby. Oferujemy próbki 2ml, odlewki 10ml oraz pełne flakony.</p>
                 <div class="hero-notice">
                     <i class="fas fa-tools"></i>
-                    <span>Sklep internetowy w trakcie budowy - zamówienia przyjmujemy przez email</span>
+                    <span>Sklep internetowy w trakcie budowy - zamówienia przyjmujemy przez email: <a href="mailto:perfumeria@lalilu.com.pl" style="color: var(--raspberry); text-decoration: underline;">perfumeria@lalilu.com.pl</a></span>
                 </div>
                 <div class="hero-cta">
                     <a href="#fragrances" class="btn">Poznaj Marki</a>
-                    <a href="#contact" class="btn btn-outline" style="margin-left: 1rem;">Zamów Próbki</a>
+                    <a href="mailto:perfumeria@lalilu.com.pl?subject=Zamówienie próbek perfum&body=Witam,%0D%0A%0D%0AInteresują mnie próbki perfum niszowych.%0D%0A%0D%0APozdrawiam" class="btn btn-outline" style="margin-left: 1rem;">Zamów Próbki</a>
                 </div>
             </div>
             
@@ -3665,6 +4319,7 @@
                     </div>
                     <div class="founder-cta">
                         <a href="#fragrances" class="btn">Zobacz Nasze Marki</a>
+                        <a href="mailto:perfumeria@lalilu.com.pl?subject=Konsultacja indywidualna&body=Witam,%0D%0A%0D%0AInteresuje mnie indywidualna konsultacja doboru perfum.%0D%0A%0D%0APozdrawiam" class="btn btn-outline" style="margin-left: 1rem;">Konsultacja</a>
                     </div>
                 </div>
             </div>
@@ -3679,12 +4334,12 @@
                 <div class="about-text">
                     <h3 style="font-family: 'Lato', sans-serif; font-weight: 300;">Czym się wyróżniamy?</h3>
                     <p>Wyróżniamy się od innych tym, że prowadzimy innowacyjną metodę doboru perfum – analizujemy jak dany zapach pasuje do danej osoby.</p>
-                    <p>Nasza marka – wyjście do klienta, aby swobodnie mógł testować zapachy zarówno na miejscu jak i próbki zapachu jak i mniejsze ilości np. 10 ml, aby lepiej poznać zapach zanim kupi cały flakon.</p>
+                    <p>Nasza marka – wyjście do klienta, aby swobodnie mógł testować zapachy zarówno na miejscu jak i próbki zapachu jak i mniejsze ilości np. 10 ml, aby lepiej poznać zapach zanim kupi cały flakon. Zamówienia przyjmujemy przez email: <a href="mailto:perfumeria@lalilu.com.pl" style="color: var(--raspberry); text-decoration: underline;">perfumeria@lalilu.com.pl</a></p>
                     <p>Marki, które będą dostępne tylko w naszej perfumerii w Polsce (przynajmniej na razie): <strong>Puzzle</strong>, <strong>Mes Bisous</strong>, <strong>Aqua Di Portofino</strong>.</p>
                     
 
                     
-                    <a href="#fragrances" class="btn btn-outline">Zobacz Dostępne Marki</a>
+                                    <a href="#fragrances" class="btn btn-outline">Zobacz Dostępne Marki</a>
                 </div>
                 <div class="about-image">
                     <div class="about-image-placeholder">
@@ -3707,6 +4362,7 @@
                     <h3 style="font-family: 'Lato', sans-serif; font-weight: 300;">Indywidualny Dobór</h3>
                     <p>Indywidualny dobór perfum dla każdego klienta w Szczecinie</p>
                     <p>20 lat doświadczenia z perfumami niszowymi w Polsce</p>
+
                         </div>
                 <div class="philosophy-item">
                     <div class="philosophy-icon">
@@ -3715,6 +4371,7 @@
                     <h3 style="font-family: 'Lato', sans-serif; font-weight: 300;">Ceny i Opcje</h3>
                     <p>Ceny do 270 zł za 100 ml</p>
                     <p>Małych odlewek 5, 10 ml</p>
+                    
                     </div>
                 <div class="philosophy-item">
                     <div class="philosophy-icon">
@@ -3723,6 +4380,7 @@
                     <h3 style="font-family: 'Lato', sans-serif; font-weight: 300;">Formaty</h3>
                     <p>Ustalone flakony</p>
                     <p>Całe flakony</p>
+                    
                 </div>
             </div>
         </div>
@@ -3732,9 +4390,11 @@
     <section id="fragrances" class="section">
         <div class="container">
             <h2 class="section-title">Dostępne Marki</h2>
-                                                              <p class="section-subtitle">Oferujemy próbki 2ml, odlewki 10ml oraz pełne flakony perfum niszowych w Szczecinie. Zamówienia przyjmujemy w sklepie i przez email.</p>
+                                                              <p class="section-subtitle">Oferujemy próbki 2ml, odlewki 10ml oraz pełne flakony perfum niszowych w Szczecinie.</p>
+                                                              <p style="text-align: center; font-size: 0.9rem; color: var(--text-gray); margin-bottom: 2rem;">Składając zamówienie, akceptujesz <a href="polityka-prywatnosci.html" target="_blank" style="color: var(--raspberry); text-decoration: underline;">Politykę Prywatności</a> i <a href="regulamin.html" target="_blank" style="color: var(--raspberry); text-decoration: underline;">Regulamin</a>.</p>
             
                                      <h3 style="text-align: center; color: #e91e63; font-family: 'Lato', sans-serif; font-size: 2rem; margin: 3rem 0 2rem; font-weight: 300;">Dostępne Teraz</h3>
+
             
             <!-- Search and Filter Section -->
             <div class="search-filter-section" style="margin-bottom: 3rem; text-align: center;">
@@ -3895,7 +4555,7 @@
                                 <span class="price-item">10ml – 50 zł</span>
                                 <span class="price-item">100ml – 415 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: BOTANICAE - Saudade&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: BOTANICAE - Saudade%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: BOTANICAE - Saudade&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: BOTANICAE - Saudade%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -3910,7 +4570,7 @@
                                 <span class="price-item">10ml – 50 zł</span>
                                 <span class="price-item">100ml – 415 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: BOTANICAE - Tromonie&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: BOTANICAE - Tromonie%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: BOTANICAE - Tromonie&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: BOTANICAE - Tromonie%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -3925,7 +4585,7 @@
                                 <span class="price-item">10ml – 30 zł</span>
                                 <span class="price-item">100ml – 270 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: BOTANICAE - Euria&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: BOTANICAE - Euria%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: BOTANICAE - Euria&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: BOTANICAE - Euria%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                 </div>
@@ -3946,7 +4606,7 @@
                                 <span class="price-item">10ml – 140 zł</span>
                                 <span class="price-item">100ml – 1350 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: GRITTI CHOIX - Matin&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: GRITTI CHOIX - Matin%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: GRITTI CHOIX - Matin&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: GRITTI CHOIX - Matin%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -3961,7 +4621,7 @@
                                 <span class="price-item">10ml – 140 zł</span>
                                 <span class="price-item">100ml – 1350 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: GRITTI CHOIX - Une Nuit&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: GRITTI CHOIX - Une Nuit%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: GRITTI CHOIX - Une Nuit&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: GRITTI CHOIX - Une Nuit%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -3976,7 +4636,7 @@
                                 <span class="price-item">10ml – 140 zł</span>
                                 <span class="price-item">100ml – 1350 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: GRITTI CHOIX - Rêve Dor&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: GRITTI CHOIX - Rêve Dor%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: GRITTI CHOIX - Rêve Dor&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: GRITTI CHOIX - Rêve Dor%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -3991,7 +4651,7 @@
                                 <span class="price-item">10ml – 140 zł</span>
                                 <span class="price-item">100ml – 1350 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: GRITTI CHOIX - Mon Ami&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: GRITTI CHOIX - Mon Ami%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: GRITTI CHOIX - Mon Ami&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: GRITTI CHOIX - Mon Ami%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                 </div>
@@ -4012,7 +4672,7 @@
                                 <span class="price-item">10ml – 85 zł</span>
                                 <span class="price-item">100ml – 780 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: SPIRIT OF KINGS - Arrakis&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: SPIRIT OF KINGS - Arrakis%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: SPIRIT OF KINGS - Arrakis&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: SPIRIT OF KINGS - Arrakis%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -4027,7 +4687,7 @@
                                 <span class="price-item">10ml – 85 zł</span>
                                 <span class="price-item">100ml – 780 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: SPIRIT OF KINGS - Erra&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: SPIRIT OF KINGS - Erra%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: SPIRIT OF KINGS - Erra&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: SPIRIT OF KINGS - Erra%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -4042,7 +4702,7 @@
                                 <span class="price-item">10ml – 85 zł</span>
                                 <span class="price-item">100ml – 780 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: SPIRIT OF KINGS - Sagira&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: SPIRIT OF KINGS - Sagira%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: SPIRIT OF KINGS - Sagira&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: SPIRIT OF KINGS - Sagira%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -4057,7 +4717,7 @@
                                 <span class="price-item">10ml – 85 zł</span>
                                 <span class="price-item">100ml – 780 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: SPIRIT OF KINGS - Matar&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: SPIRIT OF KINGS - Matar%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: SPIRIT OF KINGS - Matar&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: SPIRIT OF KINGS - Matar%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                 </div>
@@ -4078,7 +4738,7 @@
                                 <span class="price-item">10ml – 120 zł</span>
                                 <span class="price-item">100ml – 1175 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: GRITTI - Super Nova&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: GRITTI - Super Nova%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: GRITTI - Super Nova&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: GRITTI - Super Nova%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -4093,7 +4753,7 @@
                                 <span class="price-item">10ml – 90 zł</span>
                                 <span class="price-item">100ml – 925 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: GRITTI - Pomelo Sorrento&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: GRITTI - Pomelo Sorrento%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: GRITTI - Pomelo Sorrento&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: GRITTI - Pomelo Sorrento%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -4108,7 +4768,7 @@
                                 <span class="price-item">10ml – 160 zł</span>
                                 <span class="price-item">100ml – 1585 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: GRITTI - Duchessa&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: GRITTI - Duchessa%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: GRITTI - Duchessa&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: GRITTI - Duchessa%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -4123,7 +4783,7 @@
                                 <span class="price-item">10ml – 160 zł</span>
                                 <span class="price-item">100ml – 1585 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: GRITTI - Rialto&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: GRITTI - Rialto%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: GRITTI - Rialto&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: GRITTI - Rialto%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                 </div>
@@ -4144,7 +4804,7 @@
                                 <span class="price-item">10ml – 110 zł</span>
                                 <span class="price-item">100ml – 1100 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: V CANTO - Amanti&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: V CANTO - Amanti%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: V CANTO - Amanti&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: V CANTO - Amanti%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -4159,7 +4819,7 @@
                                 <span class="price-item">10ml – 110 zł</span>
                                 <span class="price-item">100ml – 1100 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: V CANTO - Sole&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: V CANTO - Sole%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: V CANTO - Sole&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: V CANTO - Sole%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -4174,7 +4834,7 @@
                                 <span class="price-item">10ml – 110 zł</span>
                                 <span class="price-item">100ml – 1100 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: V CANTO - Stelle&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: V CANTO - Stelle%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: V CANTO - Stelle&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: V CANTO - Stelle%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -4189,7 +4849,7 @@
                                 <span class="price-item">10ml – 110 zł</span>
                                 <span class="price-item">100ml – 1100 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: V CANTO - Fortuna&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: V CANTO - Fortuna%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: V CANTO - Fortuna&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: V CANTO - Fortuna%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                 </div>
@@ -4210,7 +4870,7 @@
                                 <span class="price-item">10ml – 80 zł</span>
                                 <span class="price-item">100ml – 880 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: CAVE - Amor&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: CAVE - Amor%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: CAVE - Amor&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: CAVE - Amor%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -4225,7 +4885,7 @@
                                 <span class="price-item">10ml – 80 zł</span>
                                 <span class="price-item">100ml – 880 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: CAVE - Imperial Saffron&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: CAVE - Imperial Saffron%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: CAVE - Imperial Saffron&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: CAVE - Imperial Saffron%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -4240,7 +4900,7 @@
                                 <span class="price-item">10ml – 100 zł</span>
                                 <span class="price-item">100ml – 960 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: CAVE - Alheba&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: CAVE - Alheba%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: CAVE - Alheba&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: CAVE - Alheba%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                     
@@ -4255,7 +4915,7 @@
                                 <span class="price-item">10ml – 100 zł</span>
                                 <span class="price-item">100ml – 960 zł</span>
                             </div>
-                            <a href="mailto:perfumeria@lailu.com.pl?subject=Zapytanie o zapach: CAVE - Mystic Moon&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: CAVE - Mystic Moon%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
+                            <a href="mailto:perfumeria@lalilu.com.pl?subject=Zapytanie o zapach: CAVE - Mystic Moon&body=Witam,%0D%0A%0D%0AInteresuje mnie zapach: CAVE - Mystic Moon%0D%0A%0D%0APozdrawiam" class="fragrance-btn">Zapytaj o zapach</a>
                         </div>
                     </div>
                 </div>
@@ -4842,7 +5502,7 @@
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Tak! W naszej perfumerii w Szczecinie oferujemy próbki 2ml i odlewki 10ml wszystkich naszych kompozycji. To idealne rozwiązanie dla mieszkańców Szczecina i okolic, aby poznać nuty zapachowe przed podjęciem decyzji o zakupie pełnowymiarowego flakonu.</p>
+                        <p>Tak! W naszej perfumerii w Szczecinie oferujemy próbki 2ml i odlewki 10ml wszystkich naszych kompozycji. To idealne rozwiązanie dla mieszkańców Szczecina i okolic, aby poznać nuty zapachowe przed podjęciem decyzji o zakupie pełnowymiarowego flakonu. Zamówienia przyjmujemy przez email: <a href="mailto:perfumeria@lalilu.com.pl" style="color: var(--raspberry); text-decoration: underline;">perfumeria@lalilu.com.pl</a></p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -4865,8 +5525,8 @@
                 </div>
             </div>
             <div class="faq-cta">
-                <p>Masz inne pytania?</p>
-                <a href="#contact" class="btn">Skontaktuj się z nami</a>
+                <p>Masz inne pytania? Skontaktuj się z nami przez email: <a href="mailto:perfumeria@lalilu.com.pl" style="color: var(--raspberry); text-decoration: underline;">perfumeria@lalilu.com.pl</a></p>
+                <a href="mailto:perfumeria@lalilu.com.pl?subject=Pytanie o perfumy&body=Witam,%0D%0A%0D%0AMam pytanie dotyczące perfum niszowych.%0D%0A%0D%0APozdrawiam" class="btn">Skontaktuj się z nami</a>
             </div>
         </div>
     </section>
@@ -4875,19 +5535,71 @@
 
     <!-- Newsletter Section -->
     <section id="newsletter" class="newsletter">
+        <div class="newsletter-background">
+            <div class="newsletter-particle-1"></div>
+            <div class="newsletter-particle-2"></div>
+            <div class="newsletter-particle-3"></div>
+            <div class="newsletter-glow"></div>
+        </div>
+        
         <div class="container">
-            <h2 class="section-title">Newsletter</h2>
-            <p class="newsletter-subtitle">Bądź pierwszym w Szczecinie, który dowie się o nowych kolekcjach perfum niszowych i ekskluzywnych wydarzeniach w naszej perfumerii.</p>
-            <form class="newsletter-form" action="https://formspree.io/f/mkgzzzqr" method="POST">
-                <label for="newsletter-email" class="visually-hidden">Email</label>
-                <input type="email" id="newsletter-email" name="email" placeholder="Wprowadź swój adres email" required 
-                       aria-describedby="newsletter-help">
-                <input type="hidden" name="_subject" value="Nowy zapis do newslettera La Li Lu Perfumeria Szczecin" />
-                <input type="hidden" name="_next" value="https://lailu.pl/#newsletter" />
-                <input type="text" name="_gotcha" style="display:none" />
-                <div id="newsletter-help" class="visually-hidden">Wprowadź swój adres email</div>
-                <button type="submit">Zapisz się</button>
-            </form>
+            <div class="newsletter-content">
+                <div class="newsletter-header">
+                    <div class="newsletter-icon">
+                        <i class="fas fa-envelope-open"></i>
+                    </div>
+                    <h2 class="newsletter-title">Newsletter</h2>
+                    <p class="newsletter-subtitle">Bądź pierwszym w Szczecinie, który dowie się o nowych kolekcjach perfum niszowych</p>
+                </div>
+                
+                <div class="newsletter-form-container">
+                    <form class="newsletter-form" action="https://formspree.io/f/mkgzzzqr" method="POST" id="newsletterForm">
+                        <div class="form-input-group">
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="newsletter-email" name="email" placeholder="Twój adres email" required>
+                                <div class="input-border"></div>
+                            </div>
+                        </div>
+                        
+                        <input type="hidden" name="_subject" value="Nowy zapis do newslettera La Li Lu Perfumeria Szczecin" />
+                        <input type="hidden" name="_next" value="https://lailu.pl/#newsletter" />
+                        <input type="text" name="_gotcha" style="display:none" />
+                        
+                        <div class="privacy-checkboxes">
+                            <div class="checkbox-item">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="privacy-consent" name="privacy_consent" required>
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-text">Zgoda na przetwarzanie danych zgodnie z <a href="polityka-prywatnosci.html" target="_blank">Polityką Prywatności</a> *</span>
+                            </label>
+                            </div>
+                            <div class="checkbox-item">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="marketing-consent" name="marketing_consent" required>
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-text">Zgoda na informacje handlowe *</span>
+                            </label>
+                            </div>
+                            <div class="checkbox-item">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="terms-accept" name="terms_accept" required>
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-text">Akceptuję <a href="regulamin.html" target="_blank">Regulamin</a> *</span>
+                            </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-button-wrapper">
+                            <button type="submit" id="newsletterSubmit" class="newsletter-btn">
+                                <span class="btn-text">Zapisz się</span>
+                                <i class="fas fa-paper-plane btn-icon"></i>
+                                <div class="btn-ripple"></div>
+                        </button>
+                        </div>
+                    </form>
+                </div>
+                </div>
         </div>
     </section>
 
@@ -4895,6 +5607,7 @@
     <section class="section location">
         <div class="container">
             <h2 class="section-title">Tu Jesteśmy</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-gray);">Odwiedź nas w sklepie lub napisz email: <a href="mailto:perfumeria@lalilu.com.pl" style="color: var(--raspberry); text-decoration: underline;">perfumeria@lalilu.com.pl</a></p>
             <div class="location-map">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2377.3194989920557!2d14.545696299999996!3d53.426995399999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa09f21f49611f%3A0x9cbc5b6249f5f03!2sLa%20Li%20Lu!5e0!3m2!1spl!2spl!4v1753888291765!5m2!1spl!2spl" width="100%" height="400" style="border:0; border-radius: 10px; box-shadow: var(--shadow-soft);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="La Li Lu - Perfumeria Niszowa, ul. Aleja Wojska Polskiego 9, 70-470 Szczecin"></iframe>
             </div>
@@ -4905,51 +5618,106 @@
 
     <!-- Footer -->
     <footer id="contact" class="footer">
+        <div class="footer-gradient-bg"></div>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
+            <div class="footer-main">
+                <div class="footer-brand">
                     <div class="footer-logo">
                         <svg viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg">
                             <text x="90" y="35" font-family="Dancing Script, cursive" font-size="40" font-weight="600" 
                                  text-anchor="middle" fill="#e91e63" letter-spacing="1px">La Li Lu</text>
                         </svg>
                     </div>
-                    <p>Indywidualny dobór perfum dla każdego klienta. 20 lat doświadczenia z perfumami niszowymi.</p>
-                    <div class="company-info">
-                        <p><strong>NIP:</strong> 9551852488</p>
-                        <p><strong>REGON:</strong> 812446150</p>
+                    <p class="footer-description">Indywidualny dobór perfum dla każdego klienta. 20 lat doświadczenia z perfumami niszowymi w Szczecinie.</p>
+                    
+                    <div class="social-media-section">
+                        <h4>Śledź Nas</h4>
+                        <div class="social-links-modern">
+                            <a href="#" title="Facebook" class="social-link facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="#" title="Instagram" class="social-link instagram">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://www.tiktok.com/@perfumeria_la_li_lu?_t=ZN-8yUBwcay85W&_r=1" title="TikTok" target="_blank" rel="noopener noreferrer" class="social-link tiktok">
+                                <i class="fab fa-tiktok"></i>
+                                <span>TikTok</span>
+                            </a>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h3>Lokalizacja</h3>
-                    <div class="address-block">
-                        <p><i class="fas fa-map-marker-alt"></i> ul. Aleja Wojska Polskiego 9</p>
-                        <p>70-470 Szczecin</p>
-                    </div>
-                    <div class="contact-block">
-                        <p><i class="fas fa-phone"></i> <a href="tel:+48786691636">+48 786 691 636</a></p>
-                        <p><i class="fas fa-envelope"></i> <a href="mailto:perfumeria@lailu.com.pl">perfumeria@lailu.com.pl</a></p>
-                    </div>
                 </div>
+
+                <div class="footer-grid">
                 <div class="footer-section">
-                    <h3>Godziny Otwarcia</h3>
-                    <div class="hours-block">
-                        <p><i class="fas fa-clock"></i> Pon - Pt: 10:00 - 20:00</p>
-                        <p><i class="fas fa-clock"></i> Sobota: 10:00 - 16:00</p>
-                        <p><i class="fas fa-times-circle"></i> Niedziela: Zamknięte</p>
+                        <h3><i class="fas fa-map-marker-alt"></i> Lokalizacja</h3>
+                        <div class="contact-info-modern">
+                            <p class="address">ul. Aleja Wojska Polskiego 9</p>
+                            <p class="city">70-470 Szczecin</p>
+                            <p class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:+48786691636">+48 786 691 636</a>
+                            </p>
+                            <p class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:perfumeria@lalilu.com.pl">perfumeria@lalilu.com.pl</a>
+                            </p>
                     </div>
+                    </div>
+
+                <div class="footer-section">
+                        <h3><i class="fas fa-clock"></i> Godziny Otwarcia</h3>
+                        <div class="hours-modern">
+                            <div class="hours-row">
+                                <span class="day">Poniedziałek - Piątek</span>
+                                <span class="time">10:00 - 20:00</span>
+                    </div>
+                            <div class="hours-row">
+                                <span class="day">Sobota</span>
+                                <span class="time">10:00 - 16:00</span>
                 </div>
-                <div class="footer-section">
-                    <h3>Śledź Nas</h3>
-                    <div class="social-links">
-                        <a href="#" title="Facebook" style="background: none; color: var(--raspberry); width: auto; height: auto; border-radius: 0; font-size: 1.5rem;"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" title="Instagram" style="background: none; color: var(--raspberry); width: auto; height: auto; border-radius: 0; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
-                        <a href="#" title="TikTok" style="background: none; color: var(--raspberry); width: auto; height: auto; border-radius: 0; font-size: 1.5rem;"><i class="fab fa-tiktok"></i></a>
+                            <div class="hours-row closed">
+                                <span class="day">Niedziela</span>
+                                <span class="time">Zamknięte</span>
+                            </div>
+                        </div>
                     </div>
+
+                <div class="footer-section">
+                        <h3><i class="fas fa-info-circle"></i> Informacje</h3>
+                        <div class="footer-links">
+                            <a href="polityka-prywatnosci.html" class="footer-link">
+                                <i class="fas fa-shield-alt"></i>
+                                Polityka Prywatności
+                            </a>
+                            <a href="regulamin.html" class="footer-link">
+                                <i class="fas fa-file-contract"></i>
+                                Regulamin
+                            </a>
+                            <a href="#newsletter" class="footer-link">
+                                <i class="fas fa-envelope-open"></i>
+                                Newsletter
+                            </a>
+                            <a href="#faq" class="footer-link">
+                                <i class="fas fa-question-circle"></i>
+                                FAQ
+                            </a>
+                    </div>
+                        
+                        <div class="company-details">
+                            <p><strong>NIP:</strong> 9551852488</p>
+                            <p><strong>REGON:</strong> 812446150</p>
                 </div>
             </div>
+                </div>
+            </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2025 La Li Lu. Wszystkie prawa zastrzeżone.</p>
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 La Li Lu Perfumeria Niszowa. Wszystkie prawa zastrzeżone.</p>
+                    <p class="footer-subtitle">Ekskluzywne perfumy niszowe w Szczecinie</p>
+                </div>
             </div>
         </div>
     </footer>
@@ -4980,7 +5748,21 @@
                     <input type="email" id="clientEmail" name="clientEmail">
                 </div>
                 
-                <button type="submit" class="modal-btn">Wyślij zapytanie</button>
+                <div class="privacy-checkboxes" style="margin: 1rem 0; text-align: left;">
+                    <label style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-gray);">
+                        <input type="checkbox" id="modal-privacy-consent" name="privacy_consent" required style="margin-top: 2px;">
+                        <span>Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z <a href="polityka-prywatnosci.html" target="_blank" style="color: var(--raspberry); text-decoration: underline;">Polityką Prywatności</a> (Art. 6 ust. 1 lit. b RODO) *</span>
+                    </label>
+                    <label style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem; color: var(--text-gray);">
+                        <input type="checkbox" id="modal-terms-accept" name="terms_accept" required style="margin-top: 2px;">
+                        <span>Akceptuję <a href="regulamin.html" target="_blank" style="color: var(--raspberry); text-decoration: underline;">Regulamin</a> strony *</span>
+                    </label>
+                    <p style="font-size: 0.8rem; color: var(--text-gray); margin-top: 0.5rem; line-height: 1.4;">
+                        <strong>Informacja RODO:</strong> Administratorem danych jest La Li Lu Perfumeria Niszowa. Dane będą przetwarzane w celu realizacji zamówienia. Masz prawo do dostępu do danych, ich sprostowania, usunięcia lub ograniczenia przetwarzania. Więcej informacji w <a href="polityka-prywatnosci.html" target="_blank" style="color: var(--raspberry); text-decoration: underline;">Polityce Prywatności</a>.
+                    </p>
+                </div>
+                
+                <button type="submit" class="modal-btn" id="modalSubmit" style="opacity: 0.6; cursor: not-allowed;">Wyślij zapytanie</button>
             </form>
         </div>
     </div>
@@ -5083,7 +5865,7 @@ ${selectedPrices.map(price => `• ${price}`).join('\n')}
 Pozdrawiam`;
             
             // Create mailto link
-            const mailtoLink = `mailto:perfumeria@lailu.com.pl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            const mailtoLink = `mailto:perfumeria@lalilu.com.pl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             
             // Show success message
             showNotification('Zapytanie zostało przygotowane. Otwieram klienta email...', 'success');
@@ -5680,7 +6462,7 @@ Moje dane kontaktowe:
 
 Pozdrawiam`);
 
-                            window.open(`mailto:perfumeria@lailu.com.pl?subject=${subject}&body=${body}`, '_blank');
+                            window.open(`mailto:perfumeria@lalilu.com.pl?subject=${subject}&body=${body}`, '_blank');
         }
 
         // Enhanced Mobile menu functionality
@@ -5688,6 +6470,72 @@ Pozdrawiam`);
             const mobileMenu = document.querySelector('.mobile-menu');
             const navMenu = document.querySelector('.nav-menu');
             const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            // Newsletter form validation
+            const newsletterForm = document.getElementById('newsletterForm');
+            const newsletterSubmit = document.getElementById('newsletterSubmit');
+            const privacyConsent = document.getElementById('privacy-consent');
+            const marketingConsent = document.getElementById('marketing-consent');
+            const termsAccept = document.getElementById('terms-accept');
+            
+            // Modal form validation
+            const modalSubmit = document.getElementById('modalSubmit');
+            const modalPrivacyConsent = document.getElementById('modal-privacy-consent');
+            const modalTermsAccept = document.getElementById('modal-terms-accept');
+            
+            // Function to check newsletter form
+            function checkNewsletterForm() {
+                if (privacyConsent.checked && marketingConsent.checked && termsAccept.checked) {
+                    newsletterSubmit.style.opacity = '1';
+                    newsletterSubmit.style.cursor = 'pointer';
+                } else {
+                    newsletterSubmit.style.opacity = '0.6';
+                    newsletterSubmit.style.cursor = 'not-allowed';
+                }
+            }
+            
+            // Function to check modal form
+            function checkModalForm() {
+                if (modalPrivacyConsent.checked && modalTermsAccept.checked) {
+                    modalSubmit.style.opacity = '1';
+                    modalSubmit.style.cursor = 'pointer';
+                } else {
+                    modalSubmit.style.opacity = '0.6';
+                    modalSubmit.style.cursor = 'not-allowed';
+                }
+            }
+            
+            // Add event listeners for newsletter checkboxes
+            if (privacyConsent) privacyConsent.addEventListener('change', checkNewsletterForm);
+            if (marketingConsent) marketingConsent.addEventListener('change', checkNewsletterForm);
+            if (termsAccept) termsAccept.addEventListener('change', checkNewsletterForm);
+            
+            // Add event listeners for modal checkboxes
+            if (modalPrivacyConsent) modalPrivacyConsent.addEventListener('change', checkModalForm);
+            if (modalTermsAccept) modalTermsAccept.addEventListener('change', checkModalForm);
+            
+            // Newsletter form submission
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    if (!privacyConsent.checked || !marketingConsent.checked || !termsAccept.checked) {
+                        e.preventDefault();
+                        alert('Proszę zaakceptować wszystkie wymagane zgody przed zapisaniem się do newslettera.');
+                        return false;
+                    }
+                });
+            }
+            
+            // Modal form submission
+            const modalForm = document.querySelector('.modal-form');
+            if (modalForm) {
+                modalForm.addEventListener('submit', function(e) {
+                    if (!modalPrivacyConsent.checked || !modalTermsAccept.checked) {
+                        e.preventDefault();
+                        alert('Proszę zaakceptować wszystkie wymagane zgody przed wysłaniem zapytania.');
+                        return false;
+                    }
+                });
+            }
             
             if (!mobileMenu || !navMenu) return;
             
