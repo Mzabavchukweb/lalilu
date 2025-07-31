@@ -2734,7 +2734,7 @@
             }
         }
 
-        /* Minimalistyczne Eleganckie Menu Mobilne - La Li Lu Style */
+        /* Kompaktowe i Czytelne Menu Mobilne */
         @media (max-width: 991px) {
             .nav-menu {
                 display: none;
@@ -2743,16 +2743,16 @@
                 left: 0;
                 width: 100%;
                 height: 0;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(30px);
-                -webkit-backdrop-filter: blur(30px);
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
                 flex-direction: column;
                 padding: 0;
-                box-shadow: 0 8px 32px rgba(233, 30, 99, 0.08);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
                 transform: translateY(-100%);
-                transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                transition: all 0.4s ease;
                 z-index: 999;
-                border-top: 1px solid rgba(233, 30, 99, 0.08);
+                border-top: 1px solid rgba(233, 30, 99, 0.1);
                 overflow: hidden;
                 opacity: 0;
                 visibility: hidden;
@@ -2761,17 +2761,17 @@
             .nav-menu.active {
                 display: flex;
                 height: auto;
-                padding: 4rem 0 3rem;
+                padding: 2rem 0 1.5rem;
                 transform: translateY(0);
                 opacity: 1;
                 visibility: visible;
             }
             
             .nav-menu li {
-                margin: 0.2rem 0;
+                margin: 0.1rem 0;
                 opacity: 0;
-                transform: translateY(15px);
-                animation: minimalSlideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+                transform: translateY(10px);
+                animation: compactSlideIn 0.5s ease forwards;
             }
             
             .nav-menu.active li:nth-child(1) { animation-delay: 0.1s; }
@@ -2781,7 +2781,7 @@
             .nav-menu.active li:nth-child(5) { animation-delay: 0.3s; }
             .nav-menu.active li:nth-child(6) { animation-delay: 0.35s; }
             
-            @keyframes minimalSlideIn {
+            @keyframes compactSlideIn {
                 to {
                     opacity: 1;
                     transform: translateY(0);
@@ -2790,71 +2790,54 @@
             
             .nav-menu a {
                 display: block;
-                padding: 1.5rem 3rem;
+                padding: 0.8rem 2rem;
                 text-align: center;
                 font-family: 'Lato', sans-serif;
-                font-size: 1.1rem;
-                font-weight: 400;
-                letter-spacing: 2px;
+                font-size: 0.95rem;
+                font-weight: 500;
+                letter-spacing: 1px;
                 text-transform: uppercase;
-                border-radius: 0;
-                margin: 0.3rem 2rem;
-                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                border-radius: 8px;
+                margin: 0.2rem 1rem;
+                transition: all 0.3s ease;
                 position: relative;
                 background: transparent;
                 border: none;
-                color: var(--raspberry);
-                border-bottom: 1px solid rgba(233, 30, 99, 0.1);
+                color: var(--dark-gray);
             }
             
             .nav-menu a:hover,
             .nav-menu a:focus {
-                background: rgba(233, 30, 99, 0.03);
+                background: rgba(233, 30, 99, 0.08);
                 color: var(--raspberry);
-                transform: translateX(10px);
-                border-bottom: 2px solid var(--raspberry);
-                box-shadow: none;
-            }
-            
-            .nav-menu a::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 0;
-                height: 2px;
-                background: var(--raspberry);
-                transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            }
-            
-            .nav-menu a:hover::after {
-                width: 100%;
+                transform: translateX(5px);
+                box-shadow: 0 2px 8px rgba(233, 30, 99, 0.15);
             }
 
             .mobile-menu {
                 display: flex;
                 position: relative;
-                background: rgba(233, 30, 99, 0.08);
-                border-radius: 12px;
-                padding: 0.8rem;
-                transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                border: 1px solid rgba(233, 30, 99, 0.1);
+                background: rgba(233, 30, 99, 0.05);
+                border-radius: 8px;
+                padding: 0.6rem;
+                transition: all 0.3s ease;
+                border: 1px solid rgba(233, 30, 99, 0.08);
             }
             
             .mobile-menu:hover {
-                background: rgba(233, 30, 99, 0.12);
+                background: rgba(233, 30, 99, 0.08);
                 transform: scale(1.02);
-                border-color: rgba(233, 30, 99, 0.2);
+                border-color: rgba(233, 30, 99, 0.15);
             }
             
             .mobile-menu span {
                 background: var(--raspberry);
-                box-shadow: 0 2px 8px rgba(233, 30, 99, 0.2);
+                box-shadow: 0 1px 4px rgba(233, 30, 99, 0.2);
                 transition: all 0.3s ease;
             }
             
             .mobile-menu.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
+                transform: rotate(45deg) translate(4px, 4px);
             }
             
             .mobile-menu.active span:nth-child(2) {
@@ -2862,10 +2845,10 @@
             }
             
             .mobile-menu.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -6px);
+                transform: rotate(-45deg) translate(4px, -4px);
             }
             
-            /* Minimalistyczny overlay */
+            /* Kompaktowy overlay */
             .nav-menu.active::before {
                 content: '';
                 position: fixed;
@@ -2873,51 +2856,14 @@
                 left: 0;
                 width: 100vw;
                 height: 100vh;
-                background: rgba(0, 0, 0, 0.2);
+                background: rgba(0, 0, 0, 0.15);
                 z-index: -1;
-                animation: minimalFadeIn 0.6s ease;
+                animation: compactFadeIn 0.4s ease;
             }
             
-            @keyframes minimalFadeIn {
-                from { 
-                    opacity: 0;
-                }
-                to { 
-                    opacity: 1;
-                }
-            }
-            
-            /* Subtelna dekoracja */
-            .nav-menu.active::after {
-                content: '';
-                position: absolute;
-                top: 2rem;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 40px;
-                height: 2px;
-                background: linear-gradient(90deg, transparent, var(--raspberry), transparent);
-                animation: subtleGlow 3s ease-in-out infinite;
-            }
-            
-            @keyframes subtleGlow {
-                0%, 100% { 
-                    opacity: 0.3;
-                    width: 40px;
-                }
-                50% { 
-                    opacity: 0.8;
-                    width: 60px;
-                }
-            }
-            
-            /* Dodatkowe style dla lepszej czytelności */
-            .nav-menu a:last-child {
-                border-bottom: none;
-            }
-            
-            .nav-menu a:active {
-                transform: translateX(5px) scale(0.98);
+            @keyframes compactFadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
             }
         }
 
@@ -3164,6 +3110,40 @@
             
             .founder-text h3 {
                 text-align: center;
+            }
+            
+            /* Responsywny tekst na telefonie */
+            .founder-story p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 1rem;
+                text-align: justify;
+                hyphens: auto;
+                -webkit-hyphens: auto;
+                -ms-hyphens: auto;
+            }
+            
+            .founder-quote {
+                font-size: 1rem !important;
+                line-height: 1.5;
+                margin: 1.5rem 0;
+                text-align: center;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+                margin-bottom: 1rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem !important;
+                line-height: 1.4;
+            }
+            
+            .subtitle-author {
+                font-size: 0.9rem !important;
+                margin-top: 0.5rem;
             }
             
             .mobile-founder-title {
